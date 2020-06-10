@@ -77,7 +77,7 @@ for i in range(numArvores):
 
         if (j == 0):
             linha[pri] = elemento(0, -1, i, priNo)
-        print(pri, seg)
+        #print(pri, seg)
         linha[seg] = elemento(linha[pri].altura+1, linha[pri], i, segNo)
         linha[pri].filhos.append(linha[seg]) 
         if(linha[seg].altura > alturaMaxima): alturaMaxima = linha[seg].altura
@@ -91,9 +91,9 @@ conjEstados = []
 conjEstadosFinal = []
 numAlturas = max(ultimaAlturaArvores)
 numTransicaoDepois = 0
-for i in range(numArvores):
+'''for i in range(numArvores):
     for j in range(len(elementoArvore[i])):
-        print(elementoArvore[i][j].no)
+        print(elementoArvore[i][j].no)'''
 
 
 for i in range(max(ultimaAlturaArvores)+1):
@@ -134,8 +134,8 @@ for i in range(max(ultimaAlturaArvores)+1):
     numAlturas = numAlturas - 1
                         
                 
- 
-
+print()
+print("Alfabeto ranqueado: ",alfabetoRanqueado)
 print()
 print("Conjunto de estados: \n", conjEstados)
 print()
