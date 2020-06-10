@@ -34,7 +34,7 @@ def numLinhas(nomeArq):
     arq.close()
     return numLinhas
 
-numArvores = 2
+numArvores = int(input("Escreva o número de árvores \n"))
 elementoArvore = []
 ultimaAlturaArvores = [] 
 alfabetoRanqueado = []
