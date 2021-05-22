@@ -20,7 +20,7 @@ class transicao(object):
         self.antesSeg = antesSeg
 
     def __str__(self):
-        teste = "{}({},{})->{}\n".format(self.antes, self.antesPri, self.antesSeg, self.depois)
+        teste = "{}({},{})->{}".format(self.antes, self.antesPri, self.antesSeg, self.depois)
         return teste
 
 def numLinhas(nomeArq):
@@ -35,7 +35,7 @@ def numLinhas(nomeArq):
     return numLinhas
 
 numArvores = int(input("Escreva o número de árvores \n"))
-elementoArvore = []
+elementosArvore = []
 ultimaAlturaArvores = [] 
 alfabetoRanqueado = []
 
@@ -83,7 +83,7 @@ for i in range(numArvores):
         if(linha[seg].altura > alturaMaxima): alturaMaxima = linha[seg].altura
 
     ultimaAlturaArvores.append(alturaMaxima)
-    elementoArvore.append(linha)
+    elementosArvore.append(linha)
     arq.close()
 
 transicoes = []
@@ -92,34 +92,34 @@ conjEstadosFinal = []
 numAlturas = max(ultimaAlturaArvores)
 numTransicaoDepois = 0
 '''for i in range(numArvores):
-    for j in range(len(elementoArvore[i])):
-        print(elementoArvore[i][j].no)'''
+    for j in range(len(elementosArvore[i])):
+        print(elementosArvore[i][j].no)'''
 
 
 for i in range(max(ultimaAlturaArvores)+1):
     for j in range(numArvores):
-        for k in range(len(elementoArvore[j])):
-            if (elementoArvore[j][k].altura == numAlturas):
-                if(len(elementoArvore[j][k].filhos) == 0): 
+        for k in range(len(elementosArvore[j])):
+            if (elementosArvore[j][k].altura == numAlturas):
+                if(len(elementosArvore[j][k].filhos) == 0): 
                     ant = -1 
                     dep = -1
-                elif (len(elementoArvore[j][k].filhos) == 1):
-                    ant = elementoArvore[j][k].filhos[0].no
+                elif (len(elementosArvore[j][k].filhos) == 1):
+                    ant = elementosArvore[j][k].filhos[0].no
                     dep = -1
                 else:
-                    ant = elementoArvore[j][k].filhos[0].no
-                    dep = elementoArvore[j][k].filhos[1].no
+                    ant = elementosArvore[j][k].filhos[0].no
+                    dep = elementosArvore[j][k].filhos[1].no
 
                 teveTransicao = 0
                 
                 
                 for l in range(len(transicoes)):
                     #se tiver uma transição compatível:
-                    if (elementoArvore[j][k].no == transicoes[l].antes and 
+                    if (elementosArvore[j][k].no == transicoes[l].antes and 
                     transicoes[l].antesPri == ant and transicoes[l].antesSeg == dep):
                         teveTransicao = 1
-                        elementoArvore[j][k].no = transicoes[l].depois
-                        if(elementoArvore[j][k].altura == 0): conjEstadosFinal.append(elementoArvore[j][k].no)
+                        elementosArvore[j][k].no = transicoes[l].depois
+                        if(elementosArvore[j][k].altura == 0): conjEstadosFinal.append(elementosArvore[j][k].no)
                         break
 
 
@@ -127,20 +127,28 @@ for i in range(max(ultimaAlturaArvores)+1):
                     estado = "q" + str(numTransicaoDepois)
                     numTransicaoDepois = numTransicaoDepois + 1
                     conjEstados.append(estado)
-                    if(elementoArvore[j][k].altura == 0): conjEstadosFinal.append(estado)
-                    transicoes.append(transicao(elementoArvore[j][k].no, estado, ant, dep))
-                    elementoArvore[j][k].no = estado
+                    if(elementosArvore[j][k].altura == 0): conjEstadosFinal.append(estado)
+                    transicoes.append(transicao(elementosArvore[j][k].no, estado, ant, dep))
+                    elementosArvore[j][k].no = estado
                 
     numAlturas = numAlturas - 1
-                        
-                
+    1
+print("Transições:")                        
+for i in reversed(range(len(transicoes))):
+    print(transicoes[i])                
 print()
-print("Alfabeto ranqueado: ",alfabetoRanqueado)
+print("Alfabeto Ranqueado: ")
+for i in range(len(alfabetoRanqueado)):
+    print(alfabetoRanqueado[i])
 print()
-print("Conjunto de estados: \n", conjEstados)
+print("Conjunto de estados: ")
+for i in range(len(conjEstados)):
+    print(conjEstados[i])
 print()
-print("Conjunto de estados finais: \n", conjEstadosFinal)
+print("Conjunto de estados finais: ")
+for i in range(len(conjEstadosFinal)):
+    print(conjEstadosFinal[i])
 print()
-print("Transições:")
-for i in range(len(transicoes)):
-    print(transicoes[i])
+
+
+
