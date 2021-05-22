@@ -113,7 +113,7 @@ estado_ant = [0, 0]
 for i in range(numArvores):
     arvore = i
     alturaMaxima = 0
-    nomeArq = "treefinal" + str(i+1) + ".txt"
+    nomeArq = "treefinal" + str(i) + ".txt"
     tamanhoArq = numLinhas(nomeArq)
     arq = open(nomeArq)
     linha = []
