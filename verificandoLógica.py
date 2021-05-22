@@ -1,6 +1,6 @@
 import re
 # estado 0 = wait
-# estado -1 = estado inesistente
+# estado -1 = estado inexistente
 # estado -2 = estado erro
 # estado -3 = estado sucesso
 
@@ -133,20 +133,19 @@ for i in range(numArvores):
             serLido = 3
             texto = arq.readline()
         texto = texto.replace("\n", "")
-        #def __init__(self, altura, pai, arvore, filhos, valor, estado):
         if (texto):
 
             if (serLido == 0):
                 valor = []
-                primeiro, estado = texto.split('->') # estado = q12
-                parenteses = re.search('\(([^)]+)', primeiro).group(1) #parenteses = q10, q11
-                no = primeiro.replace(("(" + parenteses + ")"), "") #no = T0N0                
-                pri, seg = parenteses.split(',') # pri = q10, seg = q11
+                primeiro, estado = texto.split('->') 
+                parenteses = re.search('\(([^)]+)', primeiro).group(1) 
+                no = primeiro.replace(("(" + parenteses + ")"), "")                
+                pri, seg = parenteses.split(',') 
                 if(pri == '-1'): pri = -1
                 if(seg == '-1'): seg = -1
                 filho = [pri, seg]
                 for g in range(len(filho)):
-                    valor.append(0) # valor é o -1 -1
+                    valor.append(0) 
 
                 if (j == 0):
 
@@ -154,7 +153,7 @@ for i in range(numArvores):
                     filho2 = -1
                     pai = elemento(0, -1, arvore , -1, [1,0], estado)
                     if(pri != -1):
-                        filho1 = elemento(1, pai, arvore, [-1, -1], [1,0], pri)
+                        filho1 = elemento(1, pai, arvore, [-1, -1], [0,0], pri)
                         filho1.pai = pai
                         linha.append(filho1)
                     if(seg != -1):
@@ -202,8 +201,6 @@ for i in range(numArvores):
             else:
                 conjEstadosFinal.append(texto)
     for tam_linha in range(len(linha)):
-        #setattr(linha[tam_linha], 'aleatorio', '?')
-        #delattr(linha[tam_linha], 'valor')
         print(linha[tam_linha])
 
     ultimaAlturaArvores.append(alturaMaxima)
@@ -211,8 +208,6 @@ for i in range(numArvores):
     arq.close()
 
 numAlturas = max(ultimaAlturaArvores) 
-
-estadox1 = -1
 
 for i in range(max(ultimaAlturaArvores) + 1):
     for j in range(numArvores):
@@ -232,19 +227,14 @@ for i in range(max(ultimaAlturaArvores) + 1):
     if (estado == -2):
         break
 
-
-
     numAlturas = numAlturas - 1
 
 if(estado == -2):
-    print("estado = {} falhou em {}".format(estado, ultimox1.estado))
+    print("Estado = {} falhou em {}".format(estado, ultimox1.estado))
 elif(estado == 0):
-    print("rodou e resultou em wait (estado 0)")
+    print("Resultou em wait (estado 0)")
 elif(estado == 1):
-    print("Passou, uhul ")
+    print("Passou")
 
-
-        
-    #numAlturas = numAlturas - 1
             
         
